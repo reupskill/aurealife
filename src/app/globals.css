@@ -1,0 +1,141 @@
+@import "tailwindcss";
+
+/* Aurea design tokens (from the Aurea design system) */
+@theme {
+  --color-void: #02080b;
+  --color-abyss: #050f15;
+  --color-midnight: #0b1f2a;
+  --color-panel: #0f2a36;
+  --color-raised: #12303e;
+  --color-tint: #163a47;
+  --color-edge: #1a3a47;
+  --color-line: #24434f;
+  --color-line-strong: #2b5160;
+
+  --color-mint: #4fe3cb;
+  --color-teal: #12a28f;
+  --color-teal-ink: #0b7a6b;
+
+  --color-ink: #f2f7f6;
+  --color-soft: #c9d6da;
+  --color-muted: #a9bcc3;
+  --color-dim: #7f9299;
+  --color-faint: #52636b;
+
+  --color-good: #5ed39a;
+  --color-good-deep: #173b2e;
+  --color-watch: #f2b65a;
+  --color-watch-deep: #3d2e14;
+  --color-act: #ff8a80;
+  --color-act-deep: #43201e;
+
+  --font-display: var(--font-sora), Inter, system-ui, sans-serif;
+  --font-sans: var(--font-inter), system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  --animate-scan: scan 4.5s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+  --animate-ping-soft: ping-soft 2.2s ease-out infinite;
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-marquee: marquee 40s linear infinite;
+  --animate-glow: glow 3s ease-in-out infinite;
+  --animate-turn: turn 9s ease-in-out infinite;
+
+  @keyframes scan {
+    0% { transform: translateY(-120px); }
+    100% { transform: translateY(640px); }
+  }
+  @keyframes ping-soft {
+    0% { transform: scale(1); opacity: 0.8; }
+    100% { transform: scale(3); opacity: 0; }
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+  @keyframes marquee {
+    to { transform: translateX(-50%); }
+  }
+  @keyframes glow {
+    0%, 100% { opacity: 0.55; }
+    50% { opacity: 1; }
+  }
+  @keyframes turn {
+    0%, 100% { transform: rotateX(-14deg) rotateY(-30deg); }
+    50% { transform: rotateX(-10deg) rotateY(-18deg); }
+  }
+  @keyframes age-pin {
+    0% { left: 20%; }
+    100% { left: 36.67%; }
+  }
+  @keyframes age-band {
+    0% { width: 0; }
+    100% { width: 16.67%; }
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-abyss);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-mint);
+  outline-offset: 3px;
+}
+
+/* SVG elements scale around their own centre */
+.origin-fill {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.dot-grid {
+  background-image: radial-gradient(rgba(79, 227, 203, 0.09) 1px, transparent 1px);
+  background-size: 26px 26px;
+}
+
+.text-gradient-mint {
+  background: linear-gradient(180deg, #4fe3cb, #12a28f);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.text-gradient-mint-x {
+  background: linear-gradient(90deg, #4fe3cb, #12a28f);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.text-gradient-amber {
+  background: linear-gradient(180deg, #f2b65a, #e07b39);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+.age-pin {
+  animation: age-pin 2.2s cubic-bezier(0.3, 0, 0.2, 1) 0.4s both;
+}
+.age-band {
+  animation: age-band 2.2s cubic-bezier(0.3, 0, 0.2, 1) 0.4s both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    scroll-behavior: auto !important;
+  }
+}
